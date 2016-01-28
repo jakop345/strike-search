@@ -19,7 +19,7 @@ Included in this repo is the site styles as well, you're free to reuse the websi
 
 ### Scrapers
 
-To come, eventually.
+I won't be releasing any scrapers, most likely, you'll find out. 
 
 ### Server requirements
 
