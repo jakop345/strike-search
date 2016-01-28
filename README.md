@@ -10,7 +10,7 @@ The Strike Search API was *never* meant to be used by the public or open sourced
 The reason for open sourcing it is simply so people who were using the api before, don't have to reconfigure anything, just drag and drop it on your host and let it feed out off data. That being said, if you want to contribute to the API's code set, feel free, I'll accept pull request. 
 
 
-Stuff like the TV Endpoints never made it out of an experimental phase, so if you fix this props to you.  
+Stuff like the TV Endpoints never made it out of an experimental phase, so if you fix this props to you.  Whoever cleans this up deserves my respect and love forever. This projects a big mess. 
 
 
 ### Actual site
