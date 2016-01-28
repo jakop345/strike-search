@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="../assets/css/bootstrap.no-responsive.no-icons.min.css" rel="stylesheet">
+     <script src="../assets/js/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <style>
+        p {
+            margin: 0 !important;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: none;
+        }
+        
+        .voy {
+            height: 20px !important;
+            position: relative;
+            top: -2px;
+            left: -3px;
+            margin-right: -36px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        var _sf_startpt = (new Date())
+            .getTime()
+
+    </script>
+    <script src="../assets/js/pusher.min.js"></script>
+</head>
+
+<body id="body">
+
+    <div style="width:320px;height:30px;background-color:#26747E;color:white;font-size:15px;line-height:30px">
+        <b><i>&nbsp;&nbsp;&nbsp;<a style="color:white" href="https://getstrike.net/torrents/" target="_blank">Adult Cat Finder</a></i></b>&nbsp;&nbsp;&nbsp;
+        <a href="/voyeur" target="_blank"><img class="voy" src="https://getstrike.net/torrents/voyeur.png" height="20"></a><a onclick=" parent.window.postMessage('removetheiframe', '*');" href="#" style="color:white;font-weight:bold;margin-right:5px; float:right;">✖</a>
+
+    </div>
+
+    <div style="width:320px;height:400px;overflow:hidden;background-color:#f0f0f0">
+        <img width="320" src="https://getstrike.net/torrents/cat.gif" />
+        <div id="chat" style="width:314px;height:175px;margin-left:2px;margin-top:2px;resize:none;background:white;overflow:scroll;border: 1px solid #CCC;-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;-moz-transition: border linear 0.2s, box-shadow linear 0.2s;-o-transition: border linear 0.2s, box-shadow linear 0.2s;transition: border linear 0.2s, box-shadow linear 0.2s;margin-bottom:5px;">
+        </div>
+        <input id="chattext" type="text" style="margin-left:2px;width:242px;" onkeypress="handleKeyPress(event,this.form)" />
+        <button onclick="addNewText()" style="margin-top:-10px;" class="btn">Send</button>
+    </div>
+
+    <script>
+        var i = 0;
+
+        var pusher = new Pusher('1d53d06c8fdfad17fa85', {
+            authEndpoint: '/pusher_auth.php'
+        });
+        var channel = pusher.subscribe('private-april');
+
+
+        window.setInterval(function () {
+            var chat = document.getElementById("chat");
+            switch (i) {
+            case 0:
+                chat.innerHTML += "<p style='color:blue'>Local Cat: meow meow <i>meow</i>?</p>";
+                break;
+            case 1:
+                chat.innerHTML += "<p style='color:blue'>Local Cat: mew... <b>meow</b> meow meow!</p>";
+                break;
+            case 2:
+                chat.innerHTML += "<p style='color:blue'>Local Cat: meow meow!! <b>meow</b></p>";
+                break;
+            case 3:
+                chat.innerHTML += "<p style='color:blue'>Local Cat: meow meow <i>meow</i>?</p>";
+                break;
+            case 4:
+                chat.innerHTML += "<p style='color:blue'>Local Cat: meow moew?! MEOW meow!?!? meow</p>";
+                break;
+            case 5:
+                chat.innerHTML += "<p style='color:blue'>Local Cat: meow meow <b><i>meow</i></b> meow</p>";
+                break;
+            case 6:
+                chat.innerHTML += "<p style='color:blue'>Local Cat: meow meow <i>meow</i>?</p>";
+                break;
+            case 7:
+                chat.innerHTML += "<p style='color:blue'>Local Cat: meow meow <i>meow</i>?</p>";
+                break;
+            }
+            chat.scrollTop = chat.scrollHeight;
+            i = (i + 1) % 7;
+        }, 3000);
+
+        function addNewText(origin) {
+            var message = $('<div/>')
+                .text(document.getElementById("chattext")
+                    .value)
+                .html();
+            channel.trigger('client-newchat', {
+                text: message,
+                time: new Date()
+                    .valueOf()
+            });
+            var chat = document.getElementById("chat");
+            var myColor = "red";
+            var name = "You: ";
+            document.getElementById("chattext")
+                .value = "";
+            chat.innerHTML += "<p style='color:" + myColor + "'>" + name + message + "</p>";
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        function handleKeyPress(e, form) {
+            var key = e.keyCode || e.which;
+            if (key == 13) {
+                addNewText(0);
+            }
+        }
+
+
+        function randomStr(m) {
+            var m = m || 9;
+            s = '', r = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            for (var i = 0; i < m; i++) {
+                s += r.charAt(Math.floor(Math.random() * r.length));
+            }
+            return s;
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+body {
+background-color: #fff;
+color: #333;
+}
+
+h1 {
+margin-top: 50px;
+}
+
+* {
+font-family: Arial, sans-serif;
+}
+
+pre {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+}
+
+.prettyprint *, .prettyprinted * {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}

@@ -7,7 +7,7 @@ The awful code behind the most beautiful torrent site to ever exist.
 The Strike Search API was *never* meant to be used by the public or open sourced for that matter, it just so happens it ended up being a big enough hit that I kept adding features to it. Its written in PHP, its awfully made, it needs to be cleaned up a lot. It was built with a "just get it working" mentality. 
 
 
-The reason for open sourcing it is simply so people who were using the api before, don't have to reconfigure anything, just drag and drop it on your host and let it feed out off data. That being said, if you want to contribute to the API's code set, feel free, I'll accept pull request. 
+The reason for open sourcing it is simply so people who were using the api before, don't have to reconfigure anything, just drag and drop it (granted you'll need to change local references and or replace them with better code) on your host and let it feed out off data. That being said, if you want to contribute to the API's code set, feel free, I'll accept pull request. 
 
 
 Stuff like the TV Endpoints never made it out of an experimental phase, so if you fix this props to you.  

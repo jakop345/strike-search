@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The official API of Strike, get instant information on torrents around the web.">
+    <meta name="keywords" content="mp3, avi, bittorrent, torrent, torrents, movies, music, games, applications, apps, download, upload, share, kopimi, magnets, magnet">
+    <meta name="author" content="Andrew Sampson">
+
+    <title>
+        Strike API
+    </title>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="./css/styles.css" rel="stylesheet">
+    <link href="./css/tomorrow.css" rel="stylesheet">
+    <link href="api.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/default.css">
+
+    <link href='../assets/css/font.css' rel='stylesheet' type='text/css'>
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]>
+<script src="../../assets/js/ie8-responsive-file-warning.js">
+</script>
+<![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
+</script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
+</script>
+<![endif]-->
+</head>
+
+<body>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+
+        <nav class="navbar navbar-inverse">
+            <div class="container container-narrow">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="https://getstrike.net/torrents/">Strike Search</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                 
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="https://getstrike.net/api/">API</a>
+                        </li>
+                        <li><a href="https://getstrike.net/torrents/help/">Terms of Service</a>
+                        </li>
+                        <li><a href="https://getstrike.net/torrents/help/">Privacy Policy</a>
+                        </li>
+                        <li><a href="https://getstrike.net/torrents/donate/">Donate</a></li>
+                        <li><a href="https://getstrike.net/torrents/help/#contact">Contact Us</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container container-narrow">
+            <h1>API</h1>
+            <p class="lead">API for Strike</p>
+        </div>
+    </div>
+
+    <div class="api">
+        <div class="container container-narrow">
+            <h1>
+              Welcome to the Strike API v2
+            </h1>
+            <hr>
+			<p>Whats new in V2.1?</p>
+			<pre>
+Downloads to raw torrents are no longer offered as an api result. This includes magnets
+
+Upload dates are now timestamps 
+
+Sizes are in bytes
+
+Subcategories are ids, list coming soon. 
+
+
+
+</pre>
+		
+            <p>
+                I for one understand the importance of getting information on torrents, scraping is a hassle and regex golf stops being fun after awhile
+            </p>
+            <p>
+                With this Open API I hope to help with the further development of your software/apps when it comes to locating information on your torrents.
+
+            </p>
+
+            <p>
+                Torrents are updated once an hour, this includes updating data like seeders/leechers but also adding new torrents. Querys are NOT cached and unknown torrents are logged to be added.
+            </p>
+            <p>
+                If you have any questions, concerns or request see my contact information at the bottom.
+            </p>
+            Web API Examples
+            </h1>
+            <hr>
+            <p>
+                The Web API is the centre of everything, from here you can get all the neat information about hashes, lets start by showing you a few examples.
+            </p>
+            <p>
+                If you just want to get the information of a single torrent based on its hash do the following
+            </p>
+            <pre>
+https://getstrike.net/api/v2/torrents/info/?hashes=B425907E5755031BDA4A8D1B6DCCACA97DA14C04
+</pre>
+            <p>
+                You will receive the following JSON output
+            </p>
+            <pre class="prettyprint"><code>{"results":1,"statuscode":200,"responsetime":0.0031,"torrents":[{"torrent_hash":"B425907E5755031BDA4A8D1B6DCCACA97DA14C04","torrent_title":"Arch Linux 2015.01.01 (x86\/x64)","torrent_category":"Applications","sub_category":"","seeds":645,"leeches":13,"file_count":1,"size":615514112,"upload_date":"Jan  6, 2015","uploader_username":"The_Doctor-","file_info":{"file_names":["archlinux-2015.01.01-dual.iso"],"file_lengths":[615514112]},"magnet_uri":"magnet:?xt=urn:btih:B425907E5755031BDA4A8D1B6DCCACA97DA14C04&dn=Arch+Linux+2015.01.01+%28x86%2Fx64%29&tr=udp:\/\/open.demonii.com:1337&tr=udp:\/\/tracker.coppersurfer.tk:6969&tr=udp:\/\/tracker.leechers-paradise.org:6969&tr=udp:\/\/exodus.desync.com:6969"}]}</code></pre>
+            <p>
+                Now if you require more torrents, simply place a comma and continue adding more hashes, the maximum is 50 a query. Duplicates are removed automatically by the API.
+            </p>
+            <p>
+                Go ahead and send this query
+            </p>
+            <pre>
+https://getstrike.net/api/v2/torrents/info/?hashes=B425907E5755031BDA4A8D1B6DCCACA97DA14C04,156B69B8643BD11849A5D8F2122E13FBB61BD041
+</pre>
+            <p>
+                You will receive yet another json object, this one containing two torrent arrays
+            </p>
+            <pre class="prettyprint"><code>{"results":2,"statuscode":200,"responsetime":0.003,"torrents":[{"torrent_hash":"156B69B8643BD11849A5D8F2122E13FBB61BD041","torrent_title":"Slackware 14.1 x86_64 DVD ISO","torrent_category":"Applications","sub_category":"","seeds":192,"leeches":9,"file_count":4,"size":2439219966,"upload_date":"Feb 24, 2014","uploader_username":"Nusantara","file_info":{"file_names":["slackware64-14.1-iso\\slackware64-14.1-install-dvd.iso"," slackware64-14.1-iso\\slackware64-14.1-install-dvd.iso.asc"," slackware64-14.1-iso\\slackware64-14.1-install-dvd.iso.md5"," slackware64-14.1-iso\\slackware64-14.1-install-dvd.iso.txt"],"file_lengths":[2438987776,198,67,231925]},"magnet_uri":"magnet:?xt=urn:btih:156B69B8643BD11849A5D8F2122E13FBB61BD041&dn=Slackware+14.1+x86_64+DVD+ISO&tr=udp:\/\/open.demonii.com:1337&tr=udp:\/\/tracker.coppersurfer.tk:6969&tr=udp:\/\/tracker.leechers-paradise.org:6969&tr=udp:\/\/exodus.desync.com:6969"},{"torrent_hash":"B425907E5755031BDA4A8D1B6DCCACA97DA14C04","torrent_title":"Arch Linux 2015.01.01 (x86\/x64)","torrent_category":"Applications","sub_category":"","seeds":645,"leeches":13,"file_count":1,"size":615514112,"upload_date":"Jan  6, 2015","uploader_username":"The_Doctor-","file_info":{"file_names":["archlinux-2015.01.01-dual.iso"],"file_lengths":[615514112]},"magnet_uri":"magnet:?xt=urn:btih:B425907E5755031BDA4A8D1B6DCCACA97DA14C04&dn=Arch+Linux+2015.01.01+%28x86%2Fx64%29&tr=udp:\/\/open.demonii.com:1337&tr=udp:\/\/tracker.coppersurfer.tk:6969&tr=udp:\/\/tracker.leechers-paradise.org:6969&tr=udp:\/\/exodus.desync.com:6969"}]}</code></pre>
+
+
+
+            <p>
+                If you wish to see how many torrents are indexed run this query
+            </p>
+            <pre>
+https://getstrike.net/api/v2/torrents/count/
+</pre>
+            <p>
+                You will receive the total number of index torrents
+            </p>
+            <pre class="prettyprint"><code>{"statuscode":200,"message":6355272}</code></pre>
+
+            <p>
+                If you wish to search, you can use the following query, you will be limited up to 100 results, you can also specify categories and sub categories
+            </p>
+            <pre>
+https://getstrike.net/api/v2/torrents/search/?phrase=Slackware%2014.1%20x86_64%20DVD%20ISO
+</pre>
+            <p>
+                You will receive the results as such
+            </p>
+            <pre class="prettyprint"><code>{"results":1,"statuscode":200,"responsetime":0.4725,"torrents":[{"torrent_hash":"156B69B8643BD11849A5D8F2122E13FBB61BD041","torrent_title":"Slackware 14.1 x86_64 DVD ISO","torrent_category":"Applications","sub_category":"","seeds":192,"leeches":9,"file_count":4,"size":2437393940.48,"download_count":40,"upload_date":"Feb 24, 2014","uploader_username":"Nusantara","page":"https:\/\/getstrike.net\/torrents\/156B69B8643BD11849A5D8F2122E13FBB61BD041","rss_feed":"https:\/\/getstrike.net\/torrents\/156B69B8643BD11849A5D8F2122E13FBB61BD041?rss=1","magnet_uri":"magnet:?xt=urn:btih:156B69B8643BD11849A5D8F2122E13FBB61BD041&dn=Slackware+14.1+x86_64+DVD+ISO&tr=udp:\/\/open.demonii.com:1337&tr=udp:\/\/tracker.coppersurfer.tk:6969&tr=udp:\/\/tracker.leechers-paradise.org:6969&tr=udp:\/\/exodus.desync.com:6969"}]}</code></pre>
+            <p>You can also specify categories as such</p>
+            <pre>
+https://getstrike.net/api/v2/torrents/search/?phrase=linux&category=Applications
+</pre>
+
+Here is a valid list of categories and sub categories 
+<pre>
+Categories:
+
+Anime
+Applications
+Books
+Games
+Movies
+Music
+Other
+TV
+XXX
+</pre>
+            <p>
+                If you wish to get a torrents description, you can do this to receive the base64 encoded version (This data is fetched, so it can be slow)
+            </p>
+            <pre>
+https://getstrike.net/api/v2/torrents/descriptions/?hash=156B69B8643BD11849A5D8F2122E13FBB61BD041
+</pre>
+
+
+
+            <h1>
+          But Wait! There Is More! - Wrappers
+        </h1>
+            <hr>
+            <h3 id="nodejs">
+         NODEJS
+        </h3>
+            <p>
+                NPM Page <a href="https://www.npmjs.com/package/strike-api">npm install strike-api</a>
+            </p>
+
+
+            <p>Example use</p>
+            <pre class="prettyprint"><code>var strike = require('strike-api');
+    
+    strike.info('B425907E5755031BDA4A8D1B6DCCACA97DA14C04').then(function(res) {
+        var status = res.statuscode;
+        var results = res.torrents;
+    
+        var result = results[0];
+    
+        console.log('L:' + result.leeches + ' S:' + result.seeds + ' - ' + result.torrent_title + ' (' + result.size + ')')
+    });
+    
+    strike.search('Slackware').then(function(res) {
+    
+        var status = res.statuscode;
+        var results = res.torrents;
+    
+        for(var i in results) {
+            console.log('L:' + results[i].leeches + ' S:' + results[i].seeds + ' - ' +  results[i].torrent_title + ' (' + results[i].size + ')')
+        }
+    });
+</code>
+</pre>
+
+            </hr>
+            <hr>
+            <h3 id="perl">
+         Perl Wrapper - Marius Gavrilescu
+        </h3>
+            <p>
+                Repo/Creator Page <a href="https://metacpan.org/pod/WebService::Strike">WebService::Strike</a>
+            </p>
+
+
+            <p>Example use</p>
+            <pre class="prettyprint"><code>use WebService::Strike;
+my $t = strike 'B425907E5755031BDA4A8D1B6DCCACA97DA14C04';
+say $t->title;               # Arch Linux 2015.01.01 (x86\/x64)
+say $t->magnet;              # Returns a magnet link
+my $torrent = $t->torrent;   # Returns the torrent file
+$t->torrent('file.torrent'); # Downloads the torrent file to 'file.torrent'
+ 
+my @debian = strike_search 'Debian';
+say 'Found ' . @debian . ' torrents matching "Debian"';
+say 'First torrent has info hash ' . $debian[0]->hash;
+ 
+my $mp = strike_search 'Modern perl', 1;
+say 'Torrent has ' . $mp->count . ' files. They are:';
+say join ' ', @{$mp->file_names};
+</code>
+</pre>
+
+            </hr>
+
+            <h1>
+          Contributing
+        </h1>
+            <hr>
+            <p>
+                If you wish to submit your own wrapper for this page, please see my contact information at the bottom. Your code will be reviewed. Please keep the naming standards as set above. Or visits the issues page and post it there <a href="https://github.com/Codeusa/Strike/issues">
+        ISSUES PAGE
+        </a>
+            </p>
+            <h1>
+          Donating
+        </h1>
+            <hr>
+            <p>
+                Strike and its API will always be free, a lot of time was spent designing not only the code but the responsiveness of the site. If you wish to contribute even a dollar, you would be allowing more time to be spent perfecting this project I will never charge for the use of the API, but hosting does cost money.
+            </p>
+            <p>
+                If you wish to donate please follow this link to paypal
+            </p>
+            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TWHNPSC7HRNR2">
+         CLICK HERE
+        </a>
+            <h1>
+          Use in Production Applications
+        </h1>
+            <hr>
+            <p>
+                If you plan to make an app that uses this API or anything that end users get their hands on. Just be sure to inform them we provide you with your results on your about page or something viewable.
+            </p>
+            <h1>
+			 <div id="products">
+          Applications using this API
+        </h1>
+            <hr>
+            <a href="https://play.google.com/store/apps/details?id=com.niobbu.nippytorrent">
+       Nippy Torrent - Search Engine - Android
+        </a>
+            </hr>
+
+
+
+
+
+            <h1>
+          Contact Information
+        </h1>
+            <hr>
+            <ul>
+                <li>
+                    <strong>
+              Twitter:
+            </strong>
+
+                    <a href="https://twitter.com/andrewmd5">
+              @Andrewmd5
+            </a>
+                </li>
+                <li>
+                    <strong>
+              Blog:
+            </strong>
+
+                    <a href="http://blog.andrew.im">
+             blog.andrew.im
+            </a>
+                </li>
+                <li>
+                    <strong>
+              Youtube:
+            </strong>
+
+                    <a href="http://www.youtube.com/codeusasoftware">
+              Youtube Channel
+            </a>
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container container-narrow">
+            <hr>
+            <p>
+                &copy; Codeusa Software
+            </p>
+        </div>
+    </footer>
+
+
+
+    <!-- Bootstrap core JavaScript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../torrents/assets/js/jquery.min.js"></script>
+
+
+    </script>
+    <script src="../js/bootstrap.min.js">
+    </script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=tomorrow"></script>
+    </script>
+
+</body>
+
+</html>

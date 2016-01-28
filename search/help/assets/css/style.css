@@ -1,0 +1,42 @@
+* {
+    font-family: Arial, sans-serif;
+}
+
+.navbar-inverse {
+    background-color: transparent;
+    border: none;
+}
+
+.navbar-inverse .container {
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.navbar-inverse .navbar-brand {
+    color: rgba(255,255,255,0.5);
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: rgba(255,255,255,0.5);
+}
+
+.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
+    color: rgba(255,255,255,1);
+}
+
+.jumbotron {
+    background-color: #26747E;
+    color: #fff;
+    padding-top: 0px;
+}
+
+.jumbotron h1 {
+    padding-top: 25px;
+}
+
+.jumbotron p.lead {
+    padding-bottom: 25px;
+}
+
+#dmp {
+    display: none;
+}

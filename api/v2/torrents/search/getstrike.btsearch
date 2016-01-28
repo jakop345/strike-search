@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<OpenSearchDescription>
+<ShortName>Strike Search</ShortName>
+<Description>A modern approach to BitTorrent searching, download music, movies, games and software. Right at your fingertips</Description>
+<Url template="https://getstrike.net/torrents/?q="/>
+</OpenSearchDescription>
