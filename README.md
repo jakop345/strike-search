@@ -10,12 +10,16 @@ The Strike Search API was *never* meant to be used by the public or open sourced
 The reason for open sourcing it is simply so people who were using the api before, don't have to reconfigure anything, just drag and drop it on your host and let it feed out off data. That being said, if you want to contribute to the API's code set, feel free, I'll accept pull request. 
 
 
-Stuff like the TV Endpoints never made it out of an experimental phase, so if you fix this props to you.  Whoever cleans this up deserves my respect and love forever. This projects a big mess. 
+Stuff like the TV Endpoints never made it out of an experimental phase, so if you fix this props to you.  
 
 
 ### Actual site
 
 Included in this repo is the site styles as well, you're free to reuse the website template for your own private use, I only ask you remove any and all reference from Strike.
+
+### Scrapers
+
+To come, eventually.
 
 ### Server requirements
 
@@ -32,3 +36,20 @@ Included in this repo is the site styles as well, you're free to reuse the websi
 
 [![forthebadge](http://forthebadge.com/images/badges/fuck-it-ship-it.svg)](http://forthebadge.com)
 [![forthebadge](http://forthebadge.com/images/badges/no-ragrets.svg)](http://forthebadge.com)
+
+
+### I need more beer
+
+**Bitcoin:** 1DpnZFPikokWwab4muVbjUXZDAD25DhXj3
+
+**Litecoin:** LKXYG9rQYxY31zLB7EeLgrhxnKv6Lqv2z9
+
+**Namecoin:** N3BgHeJS4Tg4ErzUtQgXcS24DYDaudc9vk
+
+**Terracoin:** 15kpC1kdZLwosAeoXWftWwGcskcR5QMrdQ
+
+**﻿﻿Peercoin:** PN8m2ZxfsQSN6qQyT14iDALVv8aNqJsKCq
+
+**Feathercoin:** 6shxpWEfJ5yi3tqnahFggAnkb4Z2KzxeRt
+
+**Primecoin:** AbKdKFC9VfA8jVgg8ArFxYpdmNKiN6zybR
