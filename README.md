@@ -36,20 +36,3 @@ To come, eventually.
 
 [![forthebadge](http://forthebadge.com/images/badges/fuck-it-ship-it.svg)](http://forthebadge.com)
 [![forthebadge](http://forthebadge.com/images/badges/no-ragrets.svg)](http://forthebadge.com)
-
-
-### I need more beer
-
-**Bitcoin:** 1DpnZFPikokWwab4muVbjUXZDAD25DhXj3
-
-**Litecoin:** LKXYG9rQYxY31zLB7EeLgrhxnKv6Lqv2z9
-
-**Namecoin:** N3BgHeJS4Tg4ErzUtQgXcS24DYDaudc9vk
-
-**Terracoin:** 15kpC1kdZLwosAeoXWftWwGcskcR5QMrdQ
-
-**﻿﻿Peercoin:** PN8m2ZxfsQSN6qQyT14iDALVv8aNqJsKCq
-
-**Feathercoin:** 6shxpWEfJ5yi3tqnahFggAnkb4Z2KzxeRt
-
-**Primecoin:** AbKdKFC9VfA8jVgg8ArFxYpdmNKiN6zybR
